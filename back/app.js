@@ -4,17 +4,13 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+const passport =require('passport');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
-// DEV MODULE IMPORTS
-const morgan = require('morgan');
 
 // CONFIG IMPORTS
 const _app = require('./config/app');
 const _database = require('./config/database');
-const _auth = require('./config/auth');
 
 // EXPRESS SERVER
 const app = express();
@@ -45,17 +41,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-    secret: _auth.session.secret,
-    cookie: {
-        maxAge: 60000
-    },
-    resave: false,
-    saveUninitialized: false
-}));
 
 // MODELS
 require('./models/User');
+require('./models/Note');
 
 // ROUTES
 require('./config/passport');

@@ -49,24 +49,38 @@ UserSchema.methods.validatePassword = function (password) {
     return this.hash === hash;
 };
 
-UserSchema.methods.generateJWT = function() {
+UserSchema.methods.generateJWT = function(req, res, next) {
     const today = new Date();
     const expirationDate = new Date(today);
-    expirationDate.setDate(today.getDate() + 60);
 
-    return jwt.sign({
-        email: this.email,
-        id: this._id,
-        exp: parseInt(expirationDate.getTime() / 1000, 10),
-    }, _auth.jwt.secret);
+    return jwt.sign(this.toJSON(), _auth.jwt.secret, { expiresIn: 3600 });
 };
 
-UserSchema.methods.toAuthJSON = function() {
+UserSchema.methods.toJSON = function() {
     return {
         _id: this._id,
-        email: this.email,
-        token: this.generateJWT(),
+        firstName: this.firstName,
+        lastName: this.lastName,
+        pseudo: this.pseudo,
+        avatar: this.avatar,
+        counts: this.counts,
+        email: this.email
     };
 };
 
-module.exports = mongoose.model('User', UserSchema);
+UserSchema.statics.update = (id, update, callback) => {
+    if(update.password) {
+        update.salt = crypto.randomBytes(16).toString('hex');
+        update.hash = crypto.pbkdf2Sync(update.password, update.salt, 1000, 256, 'sha512').toString('hex');
+    }
+    User.findByIdAndUpdate(id, update, {new:true}, (err,user) => {
+        if(err) {
+            return callback(err);
+        } else {
+            return callback(null,user);
+        }
+    });
+};
+
+let User = mongoose.model('User', UserSchema);
+module.exports = User;
