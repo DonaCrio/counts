@@ -16,7 +16,7 @@ exports.login = (req, res, next) => {
         return next(err);
       }
       if(passportUser) {
-        return res.json({ jwt: passportUser.generateJWT() });
+        return res.json({ jwt: passportUser.generateJWT(), user: passportUser });
       }
       return res.status(400).json( {info : info});
     })(req, res, next);

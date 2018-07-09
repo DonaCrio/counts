@@ -1,0 +1,49 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+
+  <div class="navbar-brand">
+    <a class="navbar-item">Counts</a>
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu" id="navMenu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <input class="input is-rounded" type="text" placeholder="Search...">
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <mat-icon>message</mat-icon>
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item">Message 1</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">Message 2</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">Message 3</a>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <mat-icon>notification_important</mat-icon>
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item">Notification 1</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">Notification 2</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">Notification 3</a>
+        </div>
+      </div>
+      <a class="navbar-item">
+        <mat-icon>settings</mat-icon>
+      </a>
+      <a class="navbar-item" (click)="signOut()">
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+    </div>
+  </div>
+</nav>
