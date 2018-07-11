@@ -1,8 +1,30 @@
+@import '../scss/colors';
+
 mat-sidenav-container {
-    height: calc(100vh - 3.25rem);
+  height: calc(100vh - 3.25rem);
+}
+
+.mat-sidenav {
+  background-color: $dark-indigo;
+}
+
+section {
+  padding-left: 0;
+  padding-top: 0;
+  background-color: $dark-indigo-inverted;
 }
 
 #toggle-button {
-    display: flex;
-    height: 100%;
+  height: calc(100vh - 1.70rem);
+  width: 1.55rem;
+}
+
+#toggle-button>button {
+  height: 100%;
+  width: 100%;
+}
+
+#content {
+  margin-left:2rem;
+  margin-top : 2rem;
 }

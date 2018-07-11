@@ -3,15 +3,21 @@
 <mat-card-content>
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="push">
-      <app-menu></app-menu>
+      <app-menu (click)="sidenav.toggle()"></app-menu>
     </mat-sidenav>
 
-    <div class="columns">
-      <button type="button" class="button is-primary column is-1" (click)="sidenav.open()" id="toggle-button">
-        <mat-icon>arrow_right</mat-icon>
-      </button>
-      <app-content class="column"></app-content>
-    </div>
+    <section class="section">
+      <div class="columns">
+        <div class="column is-1" id="toggle-button">
+          <button type="button" class="button is-secondary" (click)="sidenav.open()">
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+        </div>
+        <div class="column" id="content">
+          <app-content></app-content>
+        </div>
+      </div>
+    </section>
 
   </mat-sidenav-container>
 </mat-card-content>

@@ -1,0 +1,52 @@
+<div class="container">
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          New note
+        </h1>
+        <h2 class="subtitle">
+          Here you can create a brand new note !
+        </h2>
+      </div>
+    </div>
+  </section>
+  <br />
+
+  <div class="tile is-ancestor box">
+
+    <form [formGroup]="_newNoteForm" (ngSubmit)="onFormSubmit()">
+      <div class="tile is parent">
+        <div class="tile is-parent is-vertical is-7">
+          <div class="tile is-child box">
+            <div class="level">
+              <div class="level-left">
+                <mat-form-field class="level-item">
+                  <input matInput formControlName="object" placeholder="Object">
+                </mat-form-field>
+              </div>
+              <div class="level-left">
+                <mat-form-field class="level-item">
+                  <input matInput formControlName="amount" placeholder="Amount">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <br />
+
+          <div class="tile is-child box">
+            <mat-form-field>
+              <textarea matInput formControlName="comment" placeholder="Type your comment here"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile is-child box">
+
+          </div>
+        </div>
+      </div>
+      <button class="button is-primary" type="submit" [disabled]="!_newNoteForm.valid">Create</button>
+    </form>
+  </div>
+</div>

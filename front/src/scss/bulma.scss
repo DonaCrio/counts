@@ -1,13 +1,17 @@
 // 1. Import the initial variables
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
+@import './colors';
 
 // 2. Set your own initial variables
 
+
 // 3. Set the derived variables
-
+$primary: $dark-indigo;
 // 4. Setup your Custom Colors
-
+$menu-item-color: $dark-indigo-text;
+$menu-label-color: $dark-indigo-important-text;
+$menu-item-hover-background-color: $medium-indigo;
 // 5. Add new color variables to the color map.
 
 // 6. Import the rest of Bulma

@@ -4,7 +4,8 @@
   </p>
   <ul class="menu-list">
     <li>
-      <a title="Dashboard"><mat-icon>dashboard</mat-icon> Dashboard</a>
+      <a title="Dashboard" [routerLink]="['dashboard']">
+        <mat-icon>dashboard</mat-icon> Dashboard</a>
     </li>
   </ul>
   <p class="menu-label">
@@ -12,10 +13,12 @@
   </p>
   <ul class="menu-list">
     <li>
-      <a title="Notes"><mat-icon>note</mat-icon> Notes</a>
+      <a title="Notes" [routerLink]="['notes']">
+        <mat-icon>note</mat-icon> Notes</a>
     </li>
     <li>
-      <a title="Members"><mat-icon>supervisor_account</mat-icon> Members</a>
+      <a title="Members" [routerLink]="['users']">
+        <mat-icon>supervisor_account</mat-icon> Members</a>
     </li>
   </ul>
   <p class="menu-label">
@@ -23,7 +26,12 @@
   </p>
   <ul class="menu-list">
     <li>
-      <a  title="My Informations"><mat-icon>account_circle</mat-icon> Informations</a>
+      <a title="My Informations" [routerLink]="['new','note']">
+        <mat-icon>note_add</mat-icon> New Note</a>
+    </li>
+    <li>
+      <a title="My Informations">
+        <mat-icon>account_circle</mat-icon> Informations</a>
     </li>
   </ul>
 </nav>

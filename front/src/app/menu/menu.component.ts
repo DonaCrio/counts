@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,15 +8,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Output() retractedState = new EventEmitter<boolean>();
+  public note_id: string;
 
-  constructor() { }
+  constructor(
+    private _activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this._activatedRoute.params.subscribe((params) => {
+      this.note_id = params.id;
+    });
   }
-
-  retractMenu(): void {
-    this.retractedState.emit(false);
-  }
-
 }

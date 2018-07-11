@@ -1,0 +1,48 @@
+<div class="container">
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Notes
+        </h1>
+        <h2 class="subtitle">
+          See who owes you !
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Apply filter">
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="creationDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Creation date</mat-header-cell>
+      <mat-cell *matCellDef="let note">{{note.creationDate | date: 'dd/MM/yyyy'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="object">
+      <mat-header-cell *matHeaderCellDef>Object</mat-header-cell>
+      <mat-cell *matCellDef="let note">{{note.object}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+      <mat-cell *matCellDef="let note">{{note.amount | currency: 'EUR'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="updateDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Last Update</mat-header-cell>
+      <mat-cell *matCellDef="let note">{{note.updateDate | date: 'dd/MM/yyyy'}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+</div>

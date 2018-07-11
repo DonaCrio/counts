@@ -1,0 +1,73 @@
+<div class="container">
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          {{note.object}}
+        </h1>
+        <h2 class="subtitle">
+          {{ 'Last update : ' + (note.updateDate | date: 'dd/MM/yyyy')}}
+        </h2>
+      </div>
+    </div>
+  </section>
+  <br />
+
+  <div class="tile is-ancestor box">
+    <div class="tile is-vertical is-7 is-parent">
+      <div class="tile is-child">
+        <div class="tile is-child box">
+          <p class="is-size-5">
+            <strong>Contributors</strong>
+          </p>
+          <br />
+          <ul>
+            <li *ngFor="let contributor of contributors" class="level" (click)="navigateTo(contributor)">
+              <div class="level-left">
+                <p class="level-item">{{contributor.pseudo}}</p>
+              </div>
+              <div class="level-right">
+                <p class="level-item">
+                  <strong>{{contributor.amount | currency: 'EUR'}}</strong>
+                </p>
+              </div>
+            </li>
+          </ul>
+          <hr />
+          <p class="is-size-5">
+            <strong>Indebteds</strong>
+          </p>
+          <br />
+          <ul>
+            <li *ngFor="let indebted of indebteds" class="level" (click)="navigateTo(indebted)">
+              <div class="level-left">
+                <p class="level-item">
+                  {{indebted.pseudo}}</p>
+              </div>
+              <div class="level-right">
+                <p class="level-item">
+                  <strong>{{indebted.amount | currency: 'EUR'}}</strong>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="is-child">
+        <div class="tile is-child box">
+          <p class="is-size-5">
+            <strong>Comment</strong>
+          </p>
+          <p class="text">{{note.comment}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="tile is-5 is-parent">
+      <div class="tile is-child box">
+        <figure class="image">
+          <img src="/api/public/example_ticket.jpg">
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>

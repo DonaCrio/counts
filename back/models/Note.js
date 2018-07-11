@@ -29,6 +29,8 @@ const NoteSchema = new mongoose.Schema({
             }
         ]
     },
+    creationDate: Date,
+    updateDate: Date,
     picture: String
 });
 

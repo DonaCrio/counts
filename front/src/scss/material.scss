@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@include angular-material-theme(
+ mat-light-theme(
+   mat-palette($mat-indigo),
+   mat-palette($mat-indigo),
+   mat-palette($mat-indigo)
+ )
+);
+
+$dark-indigo: mat-color(mat-palette($mat-indigo, 900));
+$medium-indigo: mat-color(mat-palette($mat-indigo, 800));
+$light-indigo: mat-color(mat-palette($mat-indigo));

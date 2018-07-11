@@ -14,6 +14,8 @@ exports.listNotes = (req, res, next) => {
 exports.createNote = (req, res, next) => {
   const { body: { note } } = req;
   let newNote = new Note(note);
+  newNote.creationDate = Date.now();
+  newNote.updateDate = newNote.creationDate;
   if(newNote.isValid()) {
     newNote.save((err, note) => {
         if (err) {
@@ -41,6 +43,7 @@ exports.readNote = (req, res, next) => {
 exports.updateNote = (req, res, next) => {
   const { params: { id } } = req;
   const { body : { note } } = req;
+  note.updateDate = Date.now();
   Note.update(id, note, (err, newNote) => {
     if (err) {
         return next(err);
